@@ -1,0 +1,65 @@
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <!-- IZQUIERDA -->
+            <a class="navbar-brand" href="index.php">Hotel Piragua</a>
+
+            <!-- DERECHA -->
+            <div class="d-flex align-items-center">
+
+                <a class="btn btn-primary me-2" href="login.php">Iniciar Sesion</a>
+
+                <a href="<?php !isset($_SESSION['usuario']) ? print('login.php') : print('carro_ver.php') ?>"
+                    class="p-2 mx-1 position-relative">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-cart" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                    </svg>
+
+                    <?php
+                    if (isset($_SESSION['usuario'])):
+                        include_once __DIR__ . './../db/CarroDB.php';
+                        $cart = new Cart;
+                    ?>
+                    <span class="badge bg-secondary position-absolute top-0 start-100 translate-middle">
+                        <?= $cart->total_items()?>
+                    </span>
+                    <?php endif ?>
+                </a>
+
+                <a class="btn btn-primary ms-2" href="usuario_registro.php">Registrarte</a>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="text-center text-white">
+                        <!-- Page heading-->
+                        <h1 class="mb-5">Hotel Piragua</h1>
+
+                        <!-- Signup form-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <!-- Email address input-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
